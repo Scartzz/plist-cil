@@ -31,6 +31,9 @@ plist-cil targets:
 - .NET Core 2.1
 - .NET Core 3.1.
 - .NET 5.0
+- .NET 6.0
+- .NET 7.0
+- .NET 8.0
 
 This means it should be compatible with Mono, Xamarin.iOS, Xamarin.Mac, UWP, etc. If you find an incompatibility, please create an issue.
 

@@ -69,7 +69,9 @@ namespace plistcil.test
         public override void Write(byte[] buffer, int offset, int count)
         {
             byte[] expected = new byte[buffer.Length];
-            expectedOutput.Read(expected, offset, count);
+            int read = expectedOutput.Read(expected, offset, count);
+            
+            Assert.Equal(count, read);
 
             byte[] bufferChunk   = buffer.Skip(offset).Take(count).ToArray();
             byte[] expectedChunk = expected.Skip(offset).Take(count).ToArray();
@@ -85,7 +87,9 @@ namespace plistcil.test
         public override async Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
         {
             byte[] expected = new byte[buffer.Length];
-            await expectedOutput.ReadAsync(expected, offset, count, cancellationToken).ConfigureAwait(false);
+            int read = await expectedOutput.ReadAsync(expected, offset, count, cancellationToken).ConfigureAwait(false);
+            
+            Assert.Equal(count, read);
 
             byte[] bufferChunk   = buffer.Skip(offset).Take(count).ToArray();
             byte[] expectedChunk = expected.Skip(offset).Take(count).ToArray();
