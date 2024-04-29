@@ -32,7 +32,7 @@ namespace Claunia.PropertyList
     /// <summary>A number whose value is either an integer, a real number or bool.</summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSNumber : NSObject, IComparable
+    public sealed class NSNumber : NSObject, IComparable
     {
         /// <summary>
         ///     Indicates that the number's value is an integer. The number is stored as a .NET <see cref="long" />. Its

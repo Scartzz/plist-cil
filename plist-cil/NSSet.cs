@@ -36,7 +36,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSSet : NSObject, IEnumerable
+    public sealed class NSSet : NSObject, IEnumerable
     {
         readonly bool           ordered;
         readonly List<NSObject> set;

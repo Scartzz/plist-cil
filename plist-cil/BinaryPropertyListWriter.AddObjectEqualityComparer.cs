@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Claunia.PropertyList
 {
-    public partial class BinaryPropertyListWriter
+    public sealed partial class BinaryPropertyListWriter
     {
         /// <summary>
         ///     The equality comparer which is used when adding an object to the <see cref="BinaryPropertyListWriter.idMap" />

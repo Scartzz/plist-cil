@@ -40,7 +40,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSDictionary : NSObject, IDictionary<string, NSObject>
+    public sealed class NSDictionary : NSObject, IDictionary<string, NSObject>
     {
         readonly Dictionary<string, NSObject> dict;
 

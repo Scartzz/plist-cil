@@ -2,7 +2,7 @@
 
 namespace Claunia.PropertyList
 {
-    public partial class BinaryPropertyListWriter
+    public sealed partial class BinaryPropertyListWriter
     {
         /// <summary>
         ///     The equality comparer which is used when retrieving objects in the

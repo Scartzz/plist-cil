@@ -32,7 +32,7 @@ namespace Claunia.PropertyList
     /// <summary>Represents an Array.</summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public partial class NSArray : NSObject
+    public sealed partial class NSArray : NSObject
     {
         readonly List<NSObject> array;
 

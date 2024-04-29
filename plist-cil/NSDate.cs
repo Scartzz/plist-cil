@@ -32,7 +32,7 @@ namespace Claunia.PropertyList
     /// <summary>Represents a date</summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSDate : NSObject
+    public sealed class NSDate : NSObject
     {
         static readonly DateTime EPOCH = new(2001, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 

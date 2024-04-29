@@ -32,7 +32,7 @@ namespace Claunia.PropertyList
     /// <summary>NSData objects are wrappers for byte buffers</summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSData : NSObject
+    public sealed class NSData : NSObject
     {
         // In the XML property list format, the base-64 encoded data is split across multiple lines.
         // Each line contains 68 characters.

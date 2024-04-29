@@ -44,7 +44,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class BinaryPropertyListParser
+    public sealed partial class BinaryPropertyListParser
     {
         static readonly Encoding utf16BigEndian = Encoding.GetEncoding("UTF-16BE");
 
@@ -62,7 +62,7 @@ namespace Claunia.PropertyList
 
         /// <summary>Protected constructor so that instantiation is fully controlled by the static parse methods.</summary>
         /// <see cref="Parse(byte[])" />
-        protected BinaryPropertyListParser() {}
+        BinaryPropertyListParser() {}
 
         /// <summary>Parses a binary property list from a byte array.</summary>
         /// <param name="data">The binary property list's data.</param>
@@ -93,7 +93,7 @@ namespace Claunia.PropertyList
         /// <returns>The root object of the property list. This is usually a NSDictionary but can also be a NSArray.</returns>
         /// <param name="bytes">The binary property list's data.</param>
         /// <exception cref="PropertyListFormatException">When the property list's format could not be parsed.</exception>
-        protected NSObject DoParse(ReadOnlySpan<byte> bytes)
+        NSObject DoParse(ReadOnlySpan<byte> bytes)
         {
             if(bytes.Length < 8    ||
                bytes[0]     != 'b' ||
@@ -169,7 +169,7 @@ namespace Claunia.PropertyList
         /// <exception cref="PropertyListFormatException">When the property list's format could not be parsed.</exception>
         public static NSObject Parse(FileInfo f) => Parse(f.OpenRead());
 
-        protected int GetOffset(int obj) => offsetTable[obj];
+        int GetOffset(int obj) => offsetTable[obj];
 
         /// <summary>
         ///     Parses an object inside the currently parsed binary property list. For the format specification check
@@ -182,7 +182,7 @@ namespace Claunia.PropertyList
         /// <returns>The parsed object.</returns>
         /// <param name="obj">The object ID.</param>
         /// <exception cref="PropertyListFormatException">When the property list's format could not be parsed.</exception>
-        protected virtual NSObject ParseObject(ReadOnlySpan<byte> bytes, int obj)
+        NSObject ParseObject(ReadOnlySpan<byte> bytes, int obj)
         {
             int  offset  = offsetTable[obj];
             byte type    = bytes[offset];

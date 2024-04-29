@@ -31,7 +31,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class PropertyListFormatException : PropertyListException
+    public sealed class PropertyListFormatException : PropertyListException
     {
         /// <summary>Creates a new exception with the given message.</summary>
         /// <param name="message">A message containing information about the nature of the exception.</param>

@@ -44,7 +44,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class ASCIIPropertyListParser
+    public sealed partial class ASCIIPropertyListParser
     {
         /// <summary>A space</summary>
         public const char WHITESPACE_SPACE = ' ';
@@ -126,11 +126,6 @@ namespace Claunia.PropertyList
         * Current parsing index
         */
         int index;
-
-        /**
-        * Only allow subclasses to change instantiation.
-        */
-        protected ASCIIPropertyListParser() {}
 
         /// <summary>Creates a new parser for the given property list content.</summary>
         /// <param name="propertyListContent">The content of the property list that is to be parsed.</param>

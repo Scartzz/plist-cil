@@ -38,7 +38,7 @@ namespace Claunia.PropertyList
     /// </summary>
     /// @author Keith Randall
     /// @author Natalia Portillo
-    public partial class BinaryPropertyListWriter
+    public sealed partial class BinaryPropertyListWriter
     {
         /// <summary>Binary property list version 0.0</summary>
         public const int VERSION_00 = 0;
@@ -50,8 +50,8 @@ namespace Claunia.PropertyList
         public const int VERSION_20 = 20;
 
         // map from object to its ID
-        protected readonly Dictionary<NSObject, int> idDict  = new(new AddObjectEqualityComparer());
-        protected readonly Dictionary<NSObject, int> idDict2 = new(new GetObjectEqualityComparer());
+        readonly Dictionary<NSObject, int> idDict  = new(new AddObjectEqualityComparer());
+        readonly Dictionary<NSObject, int> idDict2 = new(new GetObjectEqualityComparer());
 
         // raw output stream to result file
         readonly Stream outStream;
@@ -60,7 +60,7 @@ namespace Claunia.PropertyList
 
         // # of bytes written so far
         long          count;
-        protected int currentId;
+        int           currentId;
         int           idSizeInBytes;
 
         /// <summary>Creates a new binary property list writer</summary>
@@ -197,7 +197,7 @@ namespace Claunia.PropertyList
         /// <exception cref="IOException"></exception>
         public static byte[] WriteToArray(NSObject root)
         {
-            var bout = new MemoryStream();
+            using var bout = new MemoryStream();
             Write(bout, root);
 
             return bout.ToArray();
@@ -306,7 +306,7 @@ namespace Claunia.PropertyList
             outStream.Flush();
         }
 
-        protected internal virtual void AssignID(NSObject obj)
+        internal void AssignID(NSObject obj)
         {
             if(ReuseObjectIds)
             {

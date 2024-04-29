@@ -31,7 +31,7 @@ namespace Claunia.PropertyList
     /// <summary>A NSString contains a string.</summary>
     /// @author Daniel Dreibrodt
     /// @author Natalia Portillo
-    public class NSString : NSObject, IComparable
+    public sealed class NSString : NSObject, IComparable
     {
         static Encoding asciiEncoder, utf16beEncoder, utf8Encoder;
 
